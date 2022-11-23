@@ -2,6 +2,8 @@ import React from "react";
 import "../Styles/invoice.css";
 import "../Styles/invoice.css";
 import { AiFillPlusCircle } from "react-icons/ai";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { GoPrimitiveDot } from "react-icons/go";
 
 function Invoice() {
   return (
@@ -25,7 +27,20 @@ function Invoice() {
           </div>
         </div>
         <div className="cards-head">
-          <div className="cards"></div>
+          <div className="cards">
+            <h5>#RT3080</h5>
+            <p className="date">Due 19 Aug 2021</p>
+            <p className="name">Jensen Huang</p>
+            <h3 className="amount">£ 1,800.90</h3>
+            <div className="card-status">
+              <div className="status">
+                <GoPrimitiveDot />
+                Paid
+              </div>
+
+              <MdKeyboardArrowRight className="goArrow" />
+            </div>
+          </div>
         </div>
       </div>
     </>
