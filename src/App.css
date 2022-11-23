@@ -43,3 +43,8 @@
   --primayClr: #1f213a;
   --secondaryClr: #141625;
 }
+
+
+.App {
+  display: flex;
+}

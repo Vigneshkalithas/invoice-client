@@ -1,0 +1,182 @@
+.detail-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    /* justify-content: center; */
+    width: 100%;
+
+}
+
+.details {
+    width: 75%;
+    /* height: 1000px; */
+    margin: 5rem;
+    background-color: var(--secondaryClr);
+
+}
+
+.go-back-head {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    /* border: 1px solid white; */
+    margin: 1.5rem 0rem;
+}
+
+.go-back-head span {
+    font-size: 1rem;
+    font-weight: bolder;
+
+
+}
+
+.back-icon {
+    font-size: 1.5rem;
+    color: var(--appClr);
+    margin-top: 5px;
+
+}
+
+.statue-edit-head {
+    margin: 1.5rem 0rem;
+    height: 6.4rem;
+    background-color: var(--primayClr);
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.full-details {
+    margin: 1.5rem 0rem;
+    height: 53rem;
+    background-color: var(--primayClr);
+    border-radius: 0.8rem;
+    position: relative;
+
+}
+
+.status-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.status-status p {
+    margin: 0rem 1rem;
+    /* color: var(--txtClr); */
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+}
+
+.ed-btn-head {
+    display: flex;
+    gap: 1rem;
+}
+
+.edit-btn,
+.del-btn,
+.mark-btn {
+
+    height: 3.2rem;
+    border: none;
+    border-radius: 2rem;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #252946;
+    width: 5rem;
+
+}
+
+.del-btn {
+    background-color: #eb5757;
+    width: 6.5rem;
+}
+
+.mark-btn {
+    background-color: var(--appClr);
+    width: 8rem;
+}
+
+
+.header-content {
+    width: 100%;
+    height: 380px;
+    /* border: 1px solid white; */
+    /* display: flex; */
+    /* margin: 3rem; */
+
+}
+
+
+
+.child-1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+
+
+}
+
+.invoiceandDate {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+}
+
+.child-2 {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.header-content p {
+    color: var(--txtClr);
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 380px;
+
+}
+
+.inside-footer-content {
+    width: 90%;
+    position: relative;
+    background-color: #252946;
+    /* border: 1px solid white; */
+
+    border-top-left-radius: 0.9rem;
+    border-top-right-radius: 0.9rem;
+
+    padding: 3rem;
+}
+
+.total-head {
+    display: flex;
+    justify-content: center;
+
+}
+
+.total {
+    width: 90%;
+    background-color: black;
+    height: 6rem;
+    border-bottom-left-radius: 0.9rem;
+    border-bottom-right-radius: 0.9rem;
+}

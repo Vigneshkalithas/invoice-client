@@ -4,8 +4,11 @@ import "../Styles/invoice.css";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { GoPrimitiveDot } from "react-icons/go";
+import { CardData } from "../Helper/CardDetail";
+import { useNavigate } from "react-router-dom";
 
 function Invoice() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="head-invoice">
@@ -27,20 +30,33 @@ function Invoice() {
           </div>
         </div>
         <div className="cards-head">
-          <div className="cards">
-            <h5>#RT3080</h5>
-            <p className="date">Due 19 Aug 2021</p>
-            <p className="name">Jensen Huang</p>
-            <h3 className="amount">£ 1,800.90</h3>
-            <div className="card-status">
-              <div className="status">
-                <GoPrimitiveDot />
-                Paid
-              </div>
+          {CardData.map((item, index) => {
+            return (
+              <>
+                <div className="cards" onClick={() => navigate("/details")}>
+                  <h5>{item.no}</h5>
+                  <p className="date">{item.date}</p>
+                  <p className="name">{item.date}</p>
+                  <h3 className="amount">{item.price}</h3>
+                  <div className="card-status">
+                    {item.status === "paid" ? (
+                      <div className="status-paid">
+                        <GoPrimitiveDot />
+                        Paid
+                      </div>
+                    ) : (
+                      <div className="status-pending">
+                        <GoPrimitiveDot />
+                        Pending
+                      </div>
+                    )}
 
-              <MdKeyboardArrowRight className="goArrow" />
-            </div>
-          </div>
+                    <MdKeyboardArrowRight className="goArrow" />
+                  </div>
+                </div>
+              </>
+            );
+          })}
         </div>
       </div>
     </>

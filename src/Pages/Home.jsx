@@ -6,10 +6,10 @@ import Invoice from "./Invoice";
 function Home() {
   return (
     <>
-      <div className="home-head">
+      {/* <div className="home-head">
         <Sidebar />
         <Invoice />
-      </div>
+      </div> */}
     </>
   );
 }
