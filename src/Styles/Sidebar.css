@@ -1,0 +1,54 @@
+.sidebar-head {
+    width: 8%;
+    height: 41rem;
+    background-color: var(--primayClr);
+    border-bottom-right-radius: 1.9rem;
+    border-top-right-radius: 1.9rem;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 41rem;
+}
+
+.logo {
+    width: 100%;
+    height: 7.5rem;
+    background-color: #7c5df9;
+    border-top-right-radius: 1.9rem;
+    border-bottom-right-radius: 1.9rem;
+}
+
+.mode-icon-head {
+    width: 6.8rem;
+    height: 5rem;
+    /* border-bottom: 1px solid var(--txtClr); */
+    display: flex;
+    justify-content: center;
+}
+
+.mode-icon {
+    color: var(--txtClr);
+    font-size: 1.7rem;
+}
+
+.dp-image-head {
+    width: 6.8rem;
+    height: 5rem;
+    /* border: 1px solid rebeccapurple; */
+    /* border-top: 1px solid var(--txtClr); */
+    display: flex;
+    justify-content: center;
+    /* padding: 1rem; */
+
+}
+
+.dp-image-head img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    /* margin: 1rem 0rem; */
+}
