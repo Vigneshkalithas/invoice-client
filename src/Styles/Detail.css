@@ -175,8 +175,24 @@
 
 .total {
     width: 90%;
-    background-color: black;
+    background-color: #0b0e15;
     height: 6rem;
     border-bottom-left-radius: 0.9rem;
     border-bottom-right-radius: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.total p {
+    color: white;
+    font-size: 0.9rem;
+    margin-left: 4rem;
+}
+
+.total h2 {
+    font-size: 2rem;
+    margin-right: 6rem;
+
 }

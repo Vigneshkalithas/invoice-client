@@ -3,13 +3,15 @@ import "../Styles/Detail.css";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { GoPrimitiveDot } from "react-icons/go";
 import Table from "../Components/Table";
+import { useNavigate } from "react-router-dom";
 
 function Details() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="detail-head">
         <div className="details">
-          <div className="go-back-head">
+          <div className="go-back-head" onClick={() => navigate("/")}>
             <span>
               <MdOutlineKeyboardArrowLeft className="back-icon" />
             </span>
@@ -80,7 +82,10 @@ function Details() {
               <div className="inside-footer-content">
                 <Table />
               </div>
-              <div className="total"></div>
+              <div className="total">
+                <p>Amount Due</p>
+                <h2>£ 1800.90</h2>
+              </div>
             </div>
           </div>
         </div>

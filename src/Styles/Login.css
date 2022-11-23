@@ -1,0 +1,94 @@
+.login-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+
+}
+
+.login {
+    width: 410px;
+    height: 466px;
+    padding: 1rem;
+    background-color: var(--primayClr);
+    border-radius: 1rem;
+    box-shadow: rgba(33, 33, 68, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+
+}
+
+.login h2 {
+    margin: 1rem 0rem;
+}
+
+.fieldBox {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+label {
+
+    color: var(--txt2Clr);
+    margin: 0.3rem 0rem;
+}
+
+input {
+    outline: none;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    width: 200px;
+    margin: .5rem 0rem;
+    color: black;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.para-login {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: whitesmoke;
+    justify-content: center;
+    margin: 1rem 0rem;
+}
+
+.para-login :hover {
+    color: var(--appClr);
+}
+
+.fp p,
+.para-login p {
+    cursor: pointer;
+    font-size: 0.9rem;
+
+}
+
+.fp p:hover {
+    color: var(--appClr);
+}
+
+small {
+    color: orangered;
+}
+
+button[type="submit"] {
+    width: 100px;
+    height: 40px;
+    background-color: var(--secondaryClr);
+    color: white;
+    border-radius: 5px;
+    margin: 1rem 0rem;
+    cursor: pointer;
+    border: none;
+}

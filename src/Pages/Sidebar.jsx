@@ -1,13 +1,16 @@
 import React from "react";
 import "../Styles/Sidebar.css";
 import { IoSunny } from "react-icons/io5";
+import { ImPacman } from "react-icons/im";
 
 function Sidebar() {
   return (
     <>
       <div className="sidebar-head">
         <div className="sidebar">
-          <div className="logo"></div>
+          <div className="logo">
+            <ImPacman />
+          </div>
           <div className="dp-switch">
             <div className="mode-icon-head">
               <IoSunny className="mode-icon" />

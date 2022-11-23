@@ -1,0 +1,59 @@
+.signup-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+
+}
+
+.signup {
+    width: 500px;
+    height: 610px;
+    padding: 1rem;
+    background-color: var(--primayClr);
+    border-radius: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio-head {
+    display: flex;
+    margin: 1rem 0rem;
+
+}
+
+.para-signup {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: white;
+    justify-content: center;
+}
+
+.para-signup p {
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.para-signup :hover {
+    color: var(--appClr);
+}
+
+.radio-btn-head {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="radio"] {
+    width: 100px;
+}

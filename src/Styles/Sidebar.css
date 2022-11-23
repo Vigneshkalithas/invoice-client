@@ -20,6 +20,10 @@
     background-color: #7c5df9;
     border-top-right-radius: 1.9rem;
     border-bottom-right-radius: 1.9rem;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mode-icon-head {
