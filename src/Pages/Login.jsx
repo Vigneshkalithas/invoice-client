@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { Config } from "../Config/Config";
 import axios from "axios";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { MyContext } from "../context";
 
 const formValidationSchema = yup.object({
@@ -37,22 +37,16 @@ function Login() {
           //   console.log(JSON.stringify(values));
           const result = await axios.post(`${Config.api}/user/login`, values);
           const resData = await result.data;
+          // console.log(resData);
           setUser(resData);
           setIsAuthenticated(true);
           const Token = result.data.sessionData.token;
           localStorage.setItem("react-app-token", Token);
           navigate("/");
-          if (result.data.message == "Invalid Credentials") {
-            toast.error("Error: " + result.data.message);
-            // alert(`${result.data.message}`);
-          } else {
-            toast.success(result.data.message);
-            // alert(`${result.data.message}`);
-            // // navigate("/")
-            // alert("succes");
-          }
+          toast.success(result.data.message);
         } catch (error) {
-          console.log(error);
+          // console.log(error.response.data);
+          toast.error(error.response.data.message);
         }
       },
     });

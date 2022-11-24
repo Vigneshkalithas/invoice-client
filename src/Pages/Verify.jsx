@@ -79,9 +79,8 @@ function Verify() {
                 type="Password"
                 placeholder="Enter Password"
                 required
-                //   value={password}
-                //   onChange={(e) => setPassword(e.target.value)
-                // }
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 

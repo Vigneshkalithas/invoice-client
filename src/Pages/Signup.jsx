@@ -7,7 +7,8 @@ import { Config } from "../Config/Config";
 import axios from "axios";
 import Alert from "react-bootstrap/Alert";
 import { Toast } from "react-bootstrap";
-// import { MyContext } from "../context";
+import { toast } from "react-toastify";
+import { MyContext } from "../context";
 
 const formValidationSchema = yup.object({
   email: yup.string().email().required("Email is Required"),
@@ -16,8 +17,8 @@ const formValidationSchema = yup.object({
 });
 
 function Signup() {
-  //   const { setUser, setIsAuthenticated } = useContext(MyContext);
   const navigate = useNavigate();
+  const { setUser, setIsAuthenticated } = useContext(MyContext);
   const {
     values,
     handleChange,
@@ -39,15 +40,15 @@ function Signup() {
         const result = await axios.post(`${Config.api}/user/signup`, values);
         console.log(result);
         if (result.data.message == "user already exists") {
-          alert(`${result.data.message}`);
+          toast.error(result.data.message);
         }
-        // setUser(result.data);
-        // setIsAuthenticated(true);
-        alert(`${result.data.message}`);
+        resetForm();
+        setUser(result.data);
+        setIsAuthenticated(true);
+        toast.success(result.data.message);
         const Token = result.data.sessionData.token;
         localStorage.setItem("react-app-token", Token);
-        navigate("/login");
-        resetForm();
+        navigate("/");
       } catch (error) {
         console.log(error);
       }

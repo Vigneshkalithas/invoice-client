@@ -10,18 +10,15 @@ import { toast } from "react-toastify";
 import { MyContext } from "../context";
 
 const formValidationSchema = yup.object({
-  username: yup.string().required("Name is Required"),
   email: yup.string().required("Email is Required"),
 });
 
 function ForgetPassword() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const { values, handleChange, handleBlur, touched, handleSubmit, errors } =
     useFormik({
       initialValues: {
-        username: "",
         email: "",
       },
       validationSchema: formValidationSchema,

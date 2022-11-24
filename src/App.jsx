@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./Pages/Home";
 import Sidebar from "./Pages/Sidebar";
 import Invoice from "./Pages/Invoice";
@@ -19,7 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
-        <Route path="/verify" element={<Verify />} />
+        <Route path="/verify/:id" element={<Verify />} />
         <Route path="/details" element={<Details />} />
       </Routes>
       <ToastContainer autoClose={1000} />
