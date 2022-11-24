@@ -48,6 +48,7 @@ function Signup() {
         toast.success(result.data.message);
         const Token = result.data.sessionData.token;
         localStorage.setItem("react-app-token", Token);
+        localStorage.setItem("role", result.data.role);
         navigate("/");
       } catch (error) {
         console.log(error);

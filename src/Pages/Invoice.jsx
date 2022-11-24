@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../Styles/invoice.css";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -7,14 +7,24 @@ import { CardData } from "../Helper/CardDetail";
 import { useNavigate } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
-import Offcanvas from "react-bootstrap/Offcanvas";
+
+import { MyContext } from "../context";
+import AddItem from "../Components/AddItem";
 
 function Invoice() {
+  const [role, setRole] = useState("");
   const [show, setShow] = useState(false);
+  const { user, setUser, isAuthenticated, setIsAuthenticated } =
+    useContext(MyContext);
+  const handleShow = () => setShow(true);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const navigate = useNavigate();
+  useEffect(() => {
+    const nrole = localStorage.getItem("role");
+    setRole(nrole);
+  }, []);
+
   return (
     <>
       <div className="head-invoice">
@@ -42,12 +52,16 @@ function Invoice() {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              <button className="add-new-btn" onClick={handleShow}>
-                <span>
-                  <AiFillPlusCircle className="new-icon" />
-                </span>
-                <span> New Invoice</span>
-              </button>
+              {role === "admin" ? (
+                <button className="add-new-btn" onClick={handleShow}>
+                  <span>
+                    <AiFillPlusCircle className="new-icon" />
+                  </span>
+                  <span> New Invoice</span>
+                </button>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
@@ -82,15 +96,7 @@ function Invoice() {
         </div>
       </div>
       <div className="canvas-head">
-        <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title>New Invoice</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            Some text as placeholder. In real life you can have the elements you
-            have chosen. Like, text, images, lists, etc.
-          </Offcanvas.Body>
-        </Offcanvas>
+        <AddItem handleClose={handleClose} show={show} />
       </div>
     </>
   );
