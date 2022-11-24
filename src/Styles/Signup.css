@@ -10,7 +10,7 @@
 
 .signup {
     width: 500px;
-    height: 610px;
+    height: 510px;
     padding: 1rem;
     background-color: var(--primayClr);
     border-radius: 1rem;
@@ -23,6 +23,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.signup-form h5 {
+    margin: 1rem 0rem;
 }
 
 .radio-head {

@@ -3,14 +3,14 @@ import "../Styles/Signup.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-// import { Config } from "../Config/Config";
-// import axios from "axios";
-// import { toast } from "react-toastify";
+import { Config } from "../Config/Config";
+import axios from "axios";
+import Alert from "react-bootstrap/Alert";
+import { Toast } from "react-bootstrap";
 // import { MyContext } from "../context";
 
 const formValidationSchema = yup.object({
-  email: yup.string().required("Email is Required"),
-  username: yup.string().required("Name is Required"),
+  email: yup.string().email().required("Email is Required"),
   password: yup.string().required("Password is required"),
   role: yup.string().required("Choose anyone"),
 });
@@ -29,7 +29,6 @@ function Signup() {
   } = useFormik({
     initialValues: {
       email: "",
-      username: "",
       password: "",
       role: "",
     },
@@ -37,17 +36,18 @@ function Signup() {
     validationSchema: formValidationSchema,
     onSubmit: async (values) => {
       try {
-        // const result = await axios.post(`${Config.api}/user/signup`, values);
-        // if (result.data.message == "user already exists") {
-        //   toast.error(result.data.message);
-        // }
+        const result = await axios.post(`${Config.api}/user/signup`, values);
+        console.log(result);
+        if (result.data.message == "user already exists") {
+          alert(`${result.data.message}`);
+        }
         // setUser(result.data);
         // setIsAuthenticated(true);
-        // const Token = result.data.sessionData.token;
-        // localStorage.setItem("react-app-token", Token);
-        // navigate("/login");
-        // toast.success(result.data.message);
-        // resetForm();
+        alert(`${result.data.message}`);
+        const Token = result.data.sessionData.token;
+        localStorage.setItem("react-app-token", Token);
+        navigate("/login");
+        resetForm();
       } catch (error) {
         console.log(error);
       }
@@ -62,7 +62,7 @@ function Signup() {
             <div className="fieldBox">
               <label>Email</label>
               <input
-                type="email"
+                type="text"
                 name="email"
                 placeholder="Enter email"
                 onChange={handleChange}
@@ -73,20 +73,7 @@ function Signup() {
                 {errors.email && touched.email ? errors.email : null}
               </small>
             </div>
-            <div className="fieldBox">
-              <label>Username</label>
-              <input
-                type="text"
-                name="username"
-                placeholder="Enter user name"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.username}
-              />
-              <small>
-                {errors.username && touched.username ? errors.username : null}
-              </small>
-            </div>
+
             <div className="fieldBox">
               <label>Password</label>
               <input

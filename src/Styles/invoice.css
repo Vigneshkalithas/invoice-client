@@ -48,7 +48,8 @@
 
 }
 
-.drop-add-btn-head button {
+
+.add-new-btn {
     width: 10rem;
     height: 3.3rem;
     border-radius: 2rem;
@@ -91,6 +92,12 @@
     cursor: pointer;
 
 }
+
+.name {
+    color: white !important;
+}
+
+
 
 .cards:hover {
     border: 1px solid var(--appClr);
@@ -161,4 +168,34 @@
 
 .amount {
     font-size: 1.3rem;
+}
+
+/* dropdown */
+
+#dropdown-basic {
+    border: none;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+#dropdown-menu {
+    background-color: var(--primayClr);
+    padding: 1rem;
+    width: 120px;
+    height: 120px;
+    border-radius: 1rem;
+
+}
+
+.drop-item {
+    color: white !important;
+}
+
+.offcanvas-header {
+    color: black;
+}
+
+.offcanvas-body {
+    color: black;
 }

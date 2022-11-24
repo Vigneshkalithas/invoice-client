@@ -95,6 +95,6 @@ button:focus-visible {
 
 
 body {
-  background-color: var(--secondaryClr);
-  color: white;
+  background-color: var(--secondaryClr) !important;
+  color: white !important;
 }

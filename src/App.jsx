@@ -8,6 +8,7 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import ForgetPassword from "./Pages/ForgetPassword";
 import Verify from "./Pages/Verify";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/verify" element={<Verify />} />
         <Route path="/details" element={<Details />} />
       </Routes>
+      <ToastContainer autoClose={1000} />
     </div>
   );
 }
