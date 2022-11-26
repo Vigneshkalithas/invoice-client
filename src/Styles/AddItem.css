@@ -1,8 +1,81 @@
 .offcanvas {
-    color: black;
-    width: 500px !important;
+    color: black !important;
+    width: 600px !important;
 }
+
 
 .label-add {
     color: black;
+}
+
+.input-sidebar {
+    border: 1px solid black;
+    width: 470px;
+}
+
+.input-3-bar {
+    width: 100px;
+    border: 1px solid black;
+}
+
+.input-2-bar {
+    width: 200px;
+    border: 1px solid black;
+}
+
+.input-1-bar {
+    width: 70px;
+    border: 1px solid black;
+}
+
+.input-1-2-bar {
+    width: 95px;
+    border: 1px solid black;
+}
+
+.input-3-head {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.input-2-head {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.input-dynamic-head {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0rem;
+}
+
+.delte-icon-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.delte-icon-head i {
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-top: 28px;
+    color: grey;
+}
+
+.delte-icon-head i:hover {
+    color: red
+}
+
+.add-new-btn-head button {
+    width: 530px;
+    height: 50px;
+    border: none;
+    background-color: var(--secondaryClr);
+    border-radius: 20px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0.7rem 0rem;
 }

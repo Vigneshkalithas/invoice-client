@@ -32,11 +32,18 @@
     /* border-bottom: 1px solid var(--txtClr); */
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .mode-icon {
     color: var(--txtClr);
-    font-size: 1.7rem;
+    font-size: 1.5rem;
+}
+
+.mode-icon-2 {
+    color: var(--txtClr);
+    font-size: 1.5rem;
+    margin-left: 0.5px;
 }
 
 .dp-image-head {
