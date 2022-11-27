@@ -52,16 +52,16 @@ function Details() {
                 <div className="invoiceandDate">
                   <div>
                     <p>Invoice Date</p>
-                    <h3>18 Aug 2021</h3>
+                    <h5>18 Aug 2021</h5>
                   </div>
                   <div>
                     <p>Payment Date</p>
-                    <h3>19 Aug 2021</h3>
+                    <h5>19 Aug 2021</h5>
                   </div>
                 </div>
                 <div>
                   <p>Bill To </p>
-                  <h3>Jensen Huang</h3>
+                  <h5>Jensen Huang</h5>
                   <p>
                     106 Kendell Street
                     <br />
@@ -73,7 +73,7 @@ function Details() {
 
                 <div>
                   <p>Sent to </p>
-                  <h3>jensenh@mail.com</h3>
+                  <h5>jensenh@mail.com</h5>
                 </div>
               </div>
               <div className="child-3"></div>

@@ -7,7 +7,6 @@ import { CardData } from "../Helper/CardDetail";
 import { useNavigate } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
-
 import { MyContext } from "../context";
 import AddItem from "../Components/AddItem";
 
@@ -70,7 +69,7 @@ function Invoice() {
             return (
               <>
                 <div className="cards" onClick={() => navigate("/details")}>
-                  <h5>{item.no}</h5>
+                  <h5 className="idno">{item.no}</h5>
                   <p className="date">{item.date}</p>
                   <h4 className="name">{item.name}</h4>
                   <h3 className="amount">{item.price}</h3>

@@ -1,0 +1,101 @@
+.member-card-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    gap: 3rem;
+}
+
+
+.mcard1,
+.mcard2 {
+    height: 530px;
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+
+
+
+}
+
+.mcard-head1,
+.mcard-head2 {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mcard-head1 {
+    background-color: #7a36e3;
+}
+
+.mcard-head2 {
+    background-color: #2b006c;
+}
+
+.m-amount {
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mb-amount {
+    font-size: 8rem;
+    font-weight: bold;
+    color: #522ab7;
+    opacity: 0.5;
+    position: absolute;
+    top: 55px;
+    left: 60px;
+}
+
+.mbody {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+
+.mbody ul {
+    /* margin: 2rem 0rem; */
+    list-style: none;
+}
+
+.mbody li {
+    margin: 0.5rem 0rem;
+}
+
+.buy1,
+.buy2 {
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+
+}
+
+.buy-btn-head {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0rem;
+}
+
+.buy1 {
+    background-color: #7a36e3;
+}
+
+.buy2 {
+    background-color: #2b006c;
+}
+
+/* #7a36e3 */
+/* #2b006c */

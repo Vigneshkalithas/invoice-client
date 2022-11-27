@@ -11,6 +11,7 @@ import ForgetPassword from "./Pages/ForgetPassword";
 import Verify from "./Pages/Verify";
 import { ToastContainer } from "react-toastify";
 import { useState } from "react";
+import Payment from "./Pages/Payment";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/verify/:id" element={<Verify />} />
         <Route path="/details" element={<Details />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
       <ToastContainer autoClose={1000} />
     </div>
