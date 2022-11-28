@@ -66,7 +66,7 @@ function AddItem({ show, handleClose }) {
             `${Config.api}/invoice/create`,
             values
           );
-          console.log(values);
+          handleClose();
         } catch (error) {
           console.log(error);
         }
@@ -233,7 +233,7 @@ function AddItem({ show, handleClose }) {
               </div>
 
               <div className="fieldBox">
-                <label className="label-add">Street Adress</label>
+                <label className="label-add">Street Address</label>
                 <input
                   className={
                     errors.clientaddress && touched.clientaddress
@@ -326,6 +326,7 @@ function AddItem({ show, handleClose }) {
                   <label htmlFor="invoiceDate">Invoice Date</label>
                   <input
                     type="date"
+                    pattern="\d{4}-\d{2}-\d{2}"
                     name="invoicedate"
                     className={
                       errors.invoicedate && touched.invoicedate

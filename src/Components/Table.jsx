@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/Table.css";
 
-function Table() {
+function Table({ oneInvoice }) {
   return (
     <>
       <table>
@@ -15,17 +15,21 @@ function Table() {
         </thead>
         <tbody>
           <tr>
-            <td>Brand Guidelines</td>
+            {/* <td>Brand Guidelines</td>
             <td>1</td>
             <td>£ 1800.90</td>
-            <td>£ 1800.90</td>
+            <td>£ 1800.90</td> */}
+            <td>{oneInvoice.itemname}</td>
+            <td>{oneInvoice.qty}</td>
+            <td>{oneInvoice.price}</td>
+            <td>£{oneInvoice.total}</td>
           </tr>
-          <tr>
+          {/* <tr>
             <td>avqevv</td>
             <td>1</td>
             <td>£ 0.00</td>
             <td>£ 0.00</td>
-          </tr>
+          </tr> */}
         </tbody>
         {/* <tfoot>
           <tr>

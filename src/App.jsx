@@ -12,6 +12,7 @@ import Verify from "./Pages/Verify";
 import { ToastContainer } from "react-toastify";
 import { useState } from "react";
 import Payment from "./Pages/Payment";
+import MemberShip from "./Components/MemberShip";
 
 function App() {
   return (
@@ -23,8 +24,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/verify/:id" element={<Verify />} />
-        <Route path="/details" element={<Details />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/details/:id" element={<Details />} />
+        <Route path="/payment" element={<MemberShip />} />
       </Routes>
       <ToastContainer autoClose={1000} />
     </div>

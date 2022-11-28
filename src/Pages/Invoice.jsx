@@ -9,20 +9,33 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import { MyContext } from "../context";
 import AddItem from "../Components/AddItem";
+import axios from "axios";
+import { Config } from "../Config/Config";
 
 function Invoice() {
   const [role, setRole] = useState("");
   const [show, setShow] = useState(false);
+  const [invoices, setInvoices] = useState([]);
+  const [len, setLen] = useState("");
   const { user, setUser, isAuthenticated, setIsAuthenticated } =
     useContext(MyContext);
   const handleShow = () => setShow(true);
 
   const handleClose = () => setShow(false);
   const navigate = useNavigate();
+  let fetchData = async () => {
+    try {
+      let result = await axios.get(`${Config.api}/invoice/all`);
+      setInvoices(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     const nrole = localStorage.getItem("role");
     setRole(nrole);
-  }, []);
+    fetchData();
+  }, [invoices]);
 
   return (
     <>
@@ -65,16 +78,19 @@ function Invoice() {
           </div>
         </div>
         <div className="cards-head">
-          {CardData.map((item, index) => {
+          {invoices.map((item, index) => {
             return (
               <>
-                <div className="cards" onClick={() => navigate("/details")}>
-                  <h5 className="idno">{item.no}</h5>
-                  <p className="date">{item.date}</p>
-                  <h4 className="name">{item.name}</h4>
-                  <h3 className="amount">{item.price}</h3>
+                <div
+                  className="cards"
+                  onClick={() => navigate(`/details/${item._id}`)}
+                >
+                  <h5 className="idno">{item.pid}</h5>
+                  <p className="date">Due {item.invoicedate}</p>
+                  <h4 className="name">{item.clientsname}</h4>
+                  <h3 className="amount">{item.total}</h3>
                   <div className="card-status">
-                    {item.status === "paid" ? (
+                    {item.status === "Paid" ? (
                       <div className="status-paid">
                         <GoPrimitiveDot />
                         Paid
