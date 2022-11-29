@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import Payment from "./Pages/Payment";
 import MemberShip from "./Components/MemberShip";
 import { MyContext } from "./context";
+import { Layout } from "./Layout";
 
 function App() {
   const {
@@ -26,8 +27,8 @@ function App() {
   } = useContext(MyContext);
 
   return (
-    <div className="App">
-      <Sidebar />
+    <div className="">
+      {/* <Sidebar />
       <Routes>
         <Route path="/" element={<Invoice />} />
         <Route path="/login" element={<Login />} />
@@ -36,7 +37,19 @@ function App() {
         <Route path="/verify/:id" element={<Verify />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/payment" element={<MemberShip />} />
+      </Routes> */}
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Invoice />} />
+          <Route path="/details/:id" element={<Details />} />
+          <Route path="/payment" element={<MemberShip />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgetpassword" element={<ForgetPassword />} />
+        <Route path="/verify/:id" element={<Verify />} />
       </Routes>
+
       <ToastContainer autoClose={1000} />
     </div>
   );

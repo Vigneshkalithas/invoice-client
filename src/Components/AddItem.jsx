@@ -34,7 +34,7 @@ function AddItem({ show, handleClose, fetchData }) {
   // const [steps, setSteps] = useState([]);
   // steps.length = inputFields.length;
   const [tok, setTok] = useState("");
-  const [localROle, setLocalROle] = useState("");
+  const [localRole, setLocalRole] = useState("");
 
   const navigate = useNavigate();
   const {
@@ -47,12 +47,14 @@ function AddItem({ show, handleClose, fetchData }) {
   } = useContext(MyContext);
 
   useEffect(() => {
-    const localrOle = localStorage.getItem("role");
-    setLocalROle(localrOle);
+    const localrol = localStorage.getItem("role");
+    setLocalRole(localrol);
+
+    console.log(userRole);
     const token = localStorage.getItem("react-app-token");
     setTok(token);
   }, []);
-
+  console.log(localRole);
   const { values, handleChange, handleBlur, touched, handleSubmit, errors } =
     useFormik({
       initialValues: {
@@ -87,7 +89,7 @@ function AddItem({ show, handleClose, fetchData }) {
               "Content-Type": "application/json",
               Authorization: `Bearer ${tok}`,
             };
-            console.log(tok);
+
             const result = await axios.post(
               `${Config.api}/invoice/create`,
               values,
@@ -100,9 +102,13 @@ function AddItem({ show, handleClose, fetchData }) {
           } catch (error) {
             console.log(error);
           }
-        } else {
+        }
+        if (userRole == "user" || localROle == "user") {
           alert("Sorry only admin can add invoices");
           navigate("/payment");
+        } else {
+          alert("Please Login");
+          navigate("/login");
         }
       },
     });

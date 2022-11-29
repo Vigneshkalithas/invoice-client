@@ -50,6 +50,11 @@
   /* box-sizing: border-box; */
 }
 
-.App {
+/* .App {
   display: flex;
+} */
+.App-child {
+  display: flex;
+  flex-direction: row;
+
 }
