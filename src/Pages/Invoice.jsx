@@ -17,10 +17,15 @@ function Invoice() {
   const [show, setShow] = useState(false);
   const [invoices, setInvoices] = useState([]);
   const [len, setLen] = useState("");
-  const { user, setUser, isAuthenticated, setIsAuthenticated } =
-    useContext(MyContext);
+  const {
+    user,
+    setUser,
+    isAuthenticated,
+    setIsAuthenticated,
+    userRole,
+    setUserRole,
+  } = useContext(MyContext);
   const handleShow = () => setShow(true);
-
   const handleClose = () => setShow(false);
   const navigate = useNavigate();
   let fetchData = async () => {
@@ -31,11 +36,13 @@ function Invoice() {
       console.log(error);
     }
   };
+
   useEffect(() => {
-    const nrole = localStorage.getItem("role");
-    setRole(nrole);
+    const LocalRole = localStorage.getItem("role");
+    setRole(LocalRole);
     fetchData();
-  }, [invoices]);
+    setLen(invoices.length);
+  }, []);
 
   return (
     <>
@@ -44,10 +51,12 @@ function Invoice() {
           <div className="invoice">
             <div>
               <h1>Invoices</h1>
-              <p>There are 7 total invoices</p>
+              {/* <p>There are {len} total invoices</p> */}
+              <p>All invoices</p>
             </div>
+
             <div className="drop-add-btn-head">
-              <Dropdown>
+              {/* <Dropdown>
                 <Dropdown.Toggle variant="" id="dropdown-basic">
                   Fiter by status
                 </Dropdown.Toggle>
@@ -63,17 +72,17 @@ function Invoice() {
                     Paid
                   </Dropdown.Item>
                 </Dropdown.Menu>
-              </Dropdown>
-              {role === "admin" ? (
-                <button className="add-new-btn" onClick={handleShow}>
-                  <span>
-                    <AiFillPlusCircle className="new-icon" />
-                  </span>
-                  <span> New Invoice</span>
-                </button>
-              ) : (
+              </Dropdown> */}
+              {/* {role === "admin" ? ( */}
+              <button className="add-new-btn" onClick={handleShow}>
+                <span>
+                  <AiFillPlusCircle className="new-icon" />
+                </span>
+                <span> New Invoice</span>
+              </button>
+              {/* ) : (
                 ""
-              )}
+              )} */}
             </div>
           </div>
         </div>
@@ -111,7 +120,7 @@ function Invoice() {
         </div>
       </div>
       <div className="canvas-head">
-        <AddItem handleClose={handleClose} show={show} />
+        <AddItem handleClose={handleClose} show={show} fetchData={fetchData} />
       </div>
     </>
   );

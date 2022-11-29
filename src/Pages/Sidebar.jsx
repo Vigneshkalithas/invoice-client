@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 import axios from "axios";
 import { Config } from "../Config/Config";
-
 function Sidebar() {
   const [token, setToken] = useState("");
   const [role, setRole] = useState("");
@@ -35,16 +34,16 @@ function Sidebar() {
             <ImPacman />
           </div>
           <div className="dp-switch">
-            <div className="mode-icon-head">
+            {/* <div className="mode-icon-head">
               <IoSunny className="mode-icon" />
+            </div> */}
+            {/* {role == "admin" || role == "user" || role == "viewer" ? ( */}
+            <div className="mode-icon-head">
+              <BiLogOut className="mode-icon-2" onClick={() => Logout()} />
             </div>
-            {role == "admin" || role == "user" || role == "viewer" ? (
-              <div className="mode-icon-head">
-                <BiLogOut className="mode-icon-2" onClick={() => Logout()} />
-              </div>
-            ) : (
-              ""
-            )}
+            {/* // ) : ( */}
+            {/* // "" */}
+            {/* // )} */}
             <div className="dp-image-head">
               <img
                 src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80"

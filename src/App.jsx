@@ -1,3 +1,4 @@
+import React, { useContext, useState, useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,11 +11,20 @@ import Signup from "./Pages/Signup";
 import ForgetPassword from "./Pages/ForgetPassword";
 import Verify from "./Pages/Verify";
 import { ToastContainer } from "react-toastify";
-import { useState } from "react";
 import Payment from "./Pages/Payment";
 import MemberShip from "./Components/MemberShip";
+import { MyContext } from "./context";
 
 function App() {
+  const {
+    user,
+    setUser,
+    isAuthenticated,
+    setIsAuthenticated,
+    userRole,
+    setUserRole,
+  } = useContext(MyContext);
+
   return (
     <div className="App">
       <Sidebar />

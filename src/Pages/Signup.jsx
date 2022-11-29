@@ -18,7 +18,14 @@ const formValidationSchema = yup.object({
 
 function Signup() {
   const navigate = useNavigate();
-  const { setUser, setIsAuthenticated } = useContext(MyContext);
+  const {
+    user,
+    setUser,
+    isAuthenticated,
+    setIsAuthenticated,
+    userRole,
+    setUserRole,
+  } = useContext(MyContext);
   const {
     values,
     handleChange,
@@ -43,12 +50,15 @@ function Signup() {
           toast.error(result.data.message);
         }
         resetForm();
-        setUser(result.data);
+        const output = result.data.sessionData;
+        setUser(output);
         setIsAuthenticated(true);
-        toast.success(result.data.message);
-        const Token = result.data.sessionData.token;
+        setUserRole(output.role);
+        const Token = output.token;
         localStorage.setItem("react-app-token", Token);
-        localStorage.setItem("role", result.data.role);
+        localStorage.setItem("role", output.role);
+        toast.success(result.data.message);
+
         navigate("/");
       } catch (error) {
         console.log(error);
@@ -117,7 +127,7 @@ function Signup() {
                 />
               </div>
 
-              <div className="radio-btn-head">
+              {/* <div className="radio-btn-head">
                 <label htmlFor="viewer">Viewer</label>
                 <input
                   type="radio"
@@ -127,7 +137,7 @@ function Signup() {
                   onBlur={handleBlur}
                   id="viewer"
                 />
-              </div>
+              </div> */}
             </div>
 
             <div></div>

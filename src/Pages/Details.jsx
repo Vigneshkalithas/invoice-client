@@ -6,10 +6,25 @@ import Table from "../Components/Table";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Config } from "../Config/Config";
+import { MyContext } from "../context";
+import EditItem from "../Components/EditItem";
 
 function Details() {
   const navigate = useNavigate();
+  const [tok, setTok] = useState("");
   const [oneInvoice, setOneInvoices] = useState([]);
+  const [role, setRole] = useState("");
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  const {
+    user,
+    setUser,
+    isAuthenticated,
+    setIsAuthenticated,
+    userRole,
+    setUserRole,
+  } = useContext(MyContext);
 
   const { id } = useParams();
 
@@ -17,13 +32,88 @@ function Details() {
     try {
       let result = await axios.get(`${Config.api}/invoice/get/${id}`);
       setOneInvoices(result.data);
-      console.log(oneInvoice);
     } catch (error) {
       console.log(error);
     }
   };
+
+  async function markPaid() {
+    if (userRole == "admin" || role == "admin") {
+      try {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${tok}`,
+        };
+        let result = await axios.patch(
+          `${Config.api}/invoice/markpaid/${id}`,
+          {
+            status: "Paid",
+          },
+          {
+            headers: headers,
+          }
+        );
+        fetchData();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    // if (
+    //   userRole == "user" ||
+    //   role == "user" ||
+    //   userRole == "viewer" ||
+    //   role == "viewer"
+    // ) {
+    //   alert("Sorry you are not admin please upgrade your plan");
+    //   navigate("/payment");
+    // }
+    else {
+      // alert("Please Login");
+      // navigate("/login");
+      alert("Sorry you are not admin please upgrade your plan");
+      navigate("/payment");
+    }
+  }
+
+  async function Delete() {
+    if (userRole == "admin" || role == "admin") {
+      try {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${tok}`,
+        };
+        const result = await axios.delete(
+          `${Config.api}/invoice/delete/${id}`,
+          { headers: headers }
+        );
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    // if (
+    //   userRole == "user" ||
+    //   role == "user" ||
+    //   userRole == "viewer" ||
+    //   role == "viewer"
+    // ) {
+    //   alert("Sorry you are not admin please upgrade your plan");
+    //   navigate("/payment");
+    // }
+    else {
+      // alert("Please Login");
+      // navigate("/login");
+      alert("Sorry you are not admin please upgrade your plan");
+      navigate("/payment");
+    }
+  }
+
   useEffect(() => {
     fetchData();
+    const LocalRole = localStorage.getItem("role");
+    setRole(LocalRole);
+    const token = localStorage.getItem("react-app-token");
+    setTok(token);
   }, []);
 
   return (
@@ -53,9 +143,19 @@ function Details() {
               )}
             </div>
             <div className="ed-btn-head">
-              <button className="edit-btn">Edit</button>
-              <button className="del-btn">Delete</button>
-              <button className="mark-btn">Mark as Paid</button>
+              <button className="edit-btn" onClick={handleShow}>
+                Edit
+              </button>
+              <button className="del-btn" onClick={() => Delete()}>
+                Delete
+              </button>
+              {oneInvoice.status === "Paid" ? (
+                ""
+              ) : (
+                <button className="mark-btn" onClick={() => markPaid()}>
+                  Mark as Paid
+                </button>
+              )}
             </div>
           </div>
           <div className="full-details">
@@ -122,6 +222,14 @@ function Details() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="canvas-head">
+        <EditItem
+          handleClose={handleClose}
+          show={show}
+          id={id}
+          fetchData={fetchData}
+        />
       </div>
     </>
   );

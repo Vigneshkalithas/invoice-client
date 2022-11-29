@@ -15,8 +15,14 @@ const formValidationSchema = yup.object({
 
 function Login() {
   const navigate = useNavigate();
-  const { user, setUser, isAuthenticated, setIsAuthenticated } =
-    useContext(MyContext);
+  const {
+    user,
+    setUser,
+    isAuthenticated,
+    setIsAuthenticated,
+    userRole,
+    setUserRole,
+  } = useContext(MyContext);
   useEffect(() => {
     if (localStorage.getItem("user")) {
       setUser(JSON.parse(localStorage.getItem("user")));
@@ -34,21 +40,19 @@ function Login() {
       validationSchema: formValidationSchema,
       onSubmit: async (values) => {
         try {
-          //   console.log(JSON.stringify(values));
           const result = await axios.post(`${Config.api}/user/login`, values);
           const resData = await result.data;
-          // console.log(resData);
-          // setUser(resData);
-          // setIsAuthenticated(true);
-          const Token = result.data.sessionData.token;
+          const output = resData.sessionData;
+          setUser(output);
+          setIsAuthenticated(true);
+          setUserRole(output.role);
+          const Token = output.token;
           localStorage.setItem("react-app-token", Token);
-          localStorage.setItem("role", resData.role);
-          // console.log(resData.role);
+          localStorage.setItem("role", output.role);
           navigate("/");
-          toast.success(result.data.message);
+          toast.success(resData.message);
           console.log(user);
         } catch (error) {
-          // console.log(error.response.data);
           toast.error(error.response.data.message);
         }
       },

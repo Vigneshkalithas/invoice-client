@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import "../Styles/AddItem.css";
+import "../Styles/EditItem.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
@@ -28,15 +28,11 @@ const formValidationSchema = yup.object({
   pid: yup.string().required("choose product id"),
 });
 
-function AddItem({ show, handleClose, fetchData }) {
-  // const [inputFields, setInputFields] = useState([""]);
-  // const [fieldLen, setFieldLen] = useState(1);
-  // const [steps, setSteps] = useState([]);
-  // steps.length = inputFields.length;
+function EditItem({ show, handleClose, id, fetchData }) {
+  const navigate = useNavigate();
+  const [data, setData] = useState("");
   const [tok, setTok] = useState("");
   const [localROle, setLocalROle] = useState("");
-
-  const navigate = useNavigate();
   const {
     user,
     setUser,
@@ -45,87 +41,85 @@ function AddItem({ show, handleClose, fetchData }) {
     userRole,
     setUserRole,
   } = useContext(MyContext);
+  let fetch = async () => {
+    try {
+      let result = await axios.get(`${Config.api}/invoice/get/${id}`);
+
+      setData(result.data);
+      const datas = result.data;
+      setValues(datas);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const localrOle = localStorage.getItem("role");
     setLocalROle(localrOle);
     const token = localStorage.getItem("react-app-token");
     setTok(token);
+    fetch();
   }, []);
 
-  const { values, handleChange, handleBlur, touched, handleSubmit, errors } =
-    useFormik({
-      initialValues: {
-        streetaddress: "",
-        city: "",
-        postcode: "",
-        country: "",
-        clientsname: "",
-        clientsemail: "",
-        clientaddress: "",
-        clientcity: "",
-        clientpostcode: "",
-        clientcountry: "",
-        invoicedate: "",
-        paymentdays: "",
-        description: "",
-        itemname: "",
-        qty: "",
-        price: "",
-        pid: "",
-      },
+  const {
+    values,
+    handleChange,
+    handleBlur,
+    setValues,
+    touched,
+    handleSubmit,
+    errors,
+  } = useFormik({
+    initialValues: {
+      streetaddress: "",
+      city: "",
+      postcode: "",
+      country: "",
+      clientsname: "",
+      clientsemail: "",
+      clientaddress: "",
+      clientcity: "",
+      clientpostcode: "",
+      clientcountry: "",
+      invoicedate: "",
+      paymentdays: "",
+      description: "",
+      itemname: "",
+      qty: "",
+      price: "",
+      pid: "",
+    },
 
-      validationSchema: formValidationSchema,
+    validationSchema: formValidationSchema,
 
-      onSubmit: async (values) => {
-        if (userRole == "admin" || localROle == "admin") {
-          try {
-            const Amount = values.qty * values.price;
+    onSubmit: async (values) => {
+      if (userRole == "admin" || localROle == "admin") {
+        try {
+          const Amount = values.qty * values.price;
 
-            Object.assign(values, { total: Amount });
-            const headers = {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${tok}`,
-            };
-            console.log(tok);
-            const result = await axios.post(
-              `${Config.api}/invoice/create`,
-              values,
-              {
-                headers: headers,
-              }
-            );
-            handleClose();
-            fetchData();
-          } catch (error) {
-            console.log(error);
-          }
-        } else {
-          alert("Sorry only admin can add invoices");
-          navigate("/payment");
+          Object.assign(values, { total: Amount });
+          const headers = {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${tok}`,
+          };
+          const result = await axios.patch(
+            `${Config.api}/invoice/edit/${id}`,
+            values,
+            {
+              headers: headers,
+            }
+          );
+          handleClose();
+          fetchData();
+        } catch (error) {
+          console.log(error);
         }
-      },
-    });
-  // const addInputItemField = (e) => {
-  //   e.preventDefault();
-  //   setInputFields((inputFields) => [...inputFields, ""]);
-  //   setFieldLen(fieldLen + 1);
-  // };
-  // const removeInputField = (index, e) => {
-  //   if (fieldLen === 1) {
-  //     return;
-  //   } else {
-  //     e.preventDefault();
-  //     const copyInputField = [...inputFields];
-  //     copyInputField.splice(index, 1);
-  //     setInputFields(copyInputField);
-  //     setFieldLen(fieldLen - 1);
-  //     const copySteps = [...steps];
-  //     copySteps.splice(index, 1);
-  //     setSteps(copySteps);
-  //     values.steps.splice(index, 1);
-  //   }
-  // };
+      } else {
+        alert("Sorry only admin can add invoices");
+        navigate("/payment");
+      }
+    },
+  });
 
   return (
     <>
@@ -635,4 +629,5 @@ function AddItem({ show, handleClose, fetchData }) {
     </>
   );
 }
-export default AddItem;
+
+export default EditItem;
