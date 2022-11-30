@@ -54,7 +54,6 @@ function AddItem({ show, handleClose, fetchData }) {
     const token = localStorage.getItem("react-app-token");
     setTok(token);
   }, []);
-  console.log(localRole);
   const { values, handleChange, handleBlur, touched, handleSubmit, errors } =
     useFormik({
       initialValues: {

@@ -8,6 +8,8 @@ import axios from "axios";
 import { Config } from "../Config/Config";
 import { MyContext } from "../context";
 import EditItem from "../Components/EditItem";
+import { MdModeEditOutline, MdDelete } from "react-icons/md";
+import { TiTick } from "react-icons/ti";
 
 function Details() {
   const navigate = useNavigate();
@@ -144,16 +146,25 @@ function Details() {
             </div>
             <div className="ed-btn-head">
               <button className="edit-btn" onClick={handleShow}>
-                Edit
+                <span className="btn-letter">Edit</span>
+                <span className="hide">
+                  <MdModeEditOutline />
+                </span>
               </button>
               <button className="del-btn" onClick={() => Delete()}>
-                Delete
+                <span className="btn-letter">Delete</span>
+                <span className="hide">
+                  <MdDelete />
+                </span>
               </button>
               {oneInvoice.status === "Paid" ? (
                 ""
               ) : (
                 <button className="mark-btn" onClick={() => markPaid()}>
-                  Mark as Paid
+                  <span className="btn-letter">Mark as Paid</span>
+                  <span className="hide">
+                    <TiTick />
+                  </span>
                 </button>
               )}
             </div>

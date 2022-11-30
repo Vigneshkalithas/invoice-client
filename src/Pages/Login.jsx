@@ -49,6 +49,7 @@ function Login() {
           const Token = output.token;
           localStorage.setItem("react-app-token", Token);
           localStorage.setItem("role", output.role);
+          localStorage.setItem("id", output.userId);
           navigate("/");
           toast.success(resData.message);
           console.log(user);

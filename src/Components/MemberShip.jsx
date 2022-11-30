@@ -16,6 +16,8 @@ function MemberShip() {
     setUserRole,
   } = useContext(MyContext);
   const Lrole = localStorage.getItem("role");
+  const Id = localStorage.getItem("id");
+  // console.log(Id);
 
   const [status, setStatus] = useState({
     // name: "The Fault In Our Stars",
@@ -40,8 +42,13 @@ function MemberShip() {
       handler: async (response) => {
         try {
           const verifyUrl = `${Config.api}/payment/verify`;
-          const { data } = await axios.post(verifyUrl, response);
+          const { data } = await axios.post(verifyUrl, { ...response, id: Id });
           console.log(data);
+          alert("now you are admin please login again");
+          localStorage.clear();
+          navigate("/login");
+          if (data.message == "Payment verified successfully") {
+          }
         } catch (error) {
           console.log(error);
         }

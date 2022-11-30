@@ -6,10 +6,17 @@ import { useNavigate } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 import axios from "axios";
 import { Config } from "../Config/Config";
+import { GoThreeBars } from "react-icons/go";
+import Button from "react-bootstrap/Button";
+import Offcanvas from "react-bootstrap/Offcanvas";
 function Sidebar() {
+  const [sidebar, setSidebar] = useState(false);
   const [token, setToken] = useState("");
   const [role, setRole] = useState("");
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   useEffect(() => {
     const Token = localStorage.getItem("react-app-token");
     const role = localStorage.getItem("role");
@@ -53,6 +60,22 @@ function Sidebar() {
           </div>
         </div>
       </div>
+      <div className="icon-head">
+        <div className="icon-bar" onClick={handleShow}>
+          <GoThreeBars />
+        </div>
+      </div>
+      <Offcanvas show={show} onHide={handleClose} id="offcanvas-sidebar">
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Invoice</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <div className="mobile-logout">
+            <h5>Log out</h5>
+            <BiLogOut className="mobile-icon-2" onClick={() => Logout()} />
+          </div>
+        </Offcanvas.Body>
+      </Offcanvas>
     </>
   );
 }

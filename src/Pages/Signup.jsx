@@ -57,6 +57,7 @@ function Signup() {
         const Token = output.token;
         localStorage.setItem("react-app-token", Token);
         localStorage.setItem("role", output.role);
+        localStorage.setItem("id", output.userId);
         toast.success(result.data.message);
 
         navigate("/");

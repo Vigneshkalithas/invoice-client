@@ -78,7 +78,7 @@ function Invoice() {
                 <span>
                   <AiFillPlusCircle className="new-icon" />
                 </span>
-                <span> New Invoice</span>
+                <span className="btn-letter"> New Invoice</span>
               </button>
               {/* ) : (
                 ""
